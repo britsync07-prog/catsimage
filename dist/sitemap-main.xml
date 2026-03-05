@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://catsimage.pages.dev/</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://cataas.com/cat</image:loc>
+      <image:title>Random Cat Image</image:title>
+      <image:caption>Adorable cat picture from CatSEO Pro</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Main Category Pages -->
+  <url>
+    <loc>https://catsimage.pages.dev/cats/random</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/cute</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/funny</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/gifs</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/memes</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/wallpapers</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/reactions</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/facts</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://catsimage.pages.dev/cats/breeds</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

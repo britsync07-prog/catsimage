@@ -1,0 +1,59 @@
+# CatSEO Pro - Robots.txt
+# https://catsimage.pages.dev/robots.txt
+
+User-agent: *
+Allow: /
+Allow: /cats/
+Allow: /images/
+Allow: /gifs/
+Allow: /memes/
+Allow: /wallpapers/
+Allow: /breeds/
+Allow: /facts/
+Allow: /tags/
+
+# Disallow API and internal routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /*?_=
+Disallow: /search?
+
+# Crawl delay for rate limiting
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://catsimage.pages.dev/sitemap.xml
+Sitemap: https://catsimage.pages.dev/sitemap-cats.xml
+Sitemap: https://catsimage.pages.dev/sitemap-images.xml
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /cats/
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

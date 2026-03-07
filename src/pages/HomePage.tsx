@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CatGallery } from '@/components/CatGallery';
 import { MemeGenerator } from '@/components/MemeGenerator';
-import { SEOHead, FAQSection } from '@/components/SEOHead';
 import { 
   categorySEO, 
   generateFAQ, 
@@ -13,7 +12,6 @@ import {
   getRandomFact,
   popularBreeds 
 } from '@/lib/api';
-import { generateWebPageSchema } from '@/lib/seo';
 
 export function HomePage() {
   const [dailyFact, setDailyFact] = useState('');
@@ -23,16 +21,6 @@ export function HomePage() {
     setDailyFact(getRandomFact());
     setFeaturedImage(`https://cataas.com/cat?cb=${Date.now()}`);
   }, []);
-
-  const faqs = generateFAQ('default');
-  const randomSEO = categorySEO.random;
-  
-  const schema = generateWebPageSchema({
-    title: randomSEO.title,
-    description: randomSEO.description,
-    url: 'https://catsimage.pages.dev',
-    image: 'https://cataas.com/cat'
-  });
 
   const quickLinks = [
     { name: 'Random Cat', href: '/cats/random', icon: Sparkles, color: 'from-blue-500 to-blue-600', description: 'Generate random cats' },
@@ -44,9 +32,7 @@ export function HomePage() {
   ];
 
   return (
-    <>
-      <SEOHead metadata={randomSEO} schema={schema} />
-      
+    <div className="animate-fade-in">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-orange-100 via-orange-50 to-cream-100 py-20 lg:py-32">
         <div className="absolute inset-0 opacity-10">
@@ -172,167 +158,20 @@ export function HomePage() {
               </Link>
             ))}
           </div>
-          
-          <div className="text-center mt-8">
-            <Link to="/cats/breeds">
-              <Button variant="outline" size="lg">
-                View All Breeds
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Random Cat Generator */}
+      {/* Cat Gallery Preview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Random Cat Generator
+              Latest Cute Cats
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Can't decide what to look at? Let fate decide! Click the button below 
-              to generate a random adorable cat image.
-            </p>
           </div>
-          
-          <div className="max-w-2xl mx-auto">
-            <RandomCatPreview />
-          </div>
-        </div>
-      </section>
-
-      {/* Cat Fact of the Day */}
-      <section className="py-16 bg-gradient-to-br from-orange-500 to-pink-500 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <BookOpen className="w-16 h-16 mx-auto mb-6 opacity-80" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Cat Fact of the Day
-          </h2>
-          <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur rounded-2xl p-8">
-            <p className="text-xl md:text-2xl font-medium">
-              "{dailyFact}"
-            </p>
-          </div>
-          <Link to="/cats/facts">
-            <Button variant="secondary" size="lg" className="mt-8">
-              More Cat Facts
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Meme Generator Preview */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Create Your Own Cat Memes
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Turn any cat image into a viral meme! Add your own text and share 
-              with friends. It's free and easy to use.
-            </p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
-            <MemeGenerator />
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Tags */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Browse by Tag
-            </h2>
-            <p className="text-gray-600">
-              Find exactly what you're looking for with our popular tags
-            </p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-3">
-            {getPopularTags().map((tag: string) => (
-              <Link
-                key={tag}
-                to={`/cats/tag/${tag}`}
-                className="px-6 py-3 bg-orange-100 text-orange-700 rounded-full font-medium hover:bg-orange-200 transition-colors capitalize"
-              >
-                #{tag}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Gallery */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Featured Cat Gallery
-            </h2>
-            <p className="text-gray-600">
-              Hand-picked adorable cats from our collection
-            </p>
-          </div>
-          
           <CatGallery category="cute" limit={8} showAds={false} />
-          
-          <div className="text-center mt-12">
-            <Link to="/cats/cute">
-              <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600">
-                View More Cute Cats
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
-      <FAQSection faqs={faqs} />
-    </>
-  );
-}
-
-// Random Cat Preview Component
-function RandomCatPreview() {
-  const [imageUrl, setImageUrl] = useState(`https://cataas.com/cat?cb=${Date.now()}`);
-  const [loading, setLoading] = useState(false);
-
-  const generateNew = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setImageUrl(`https://cataas.com/cat?cb=${Date.now()}`);
-      setLoading(false);
-    }, 500);
-  };
-
-  return (
-    <div className="text-center">
-      <div className="relative bg-gray-100 rounded-2xl overflow-hidden mb-6 aspect-video">
-        {loading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin" />
-          </div>
-        )}
-        <img
-          src={imageUrl}
-          alt="Random cat"
-          className={`w-full h-full object-cover transition-opacity ${loading ? 'opacity-50' : 'opacity-100'}`}
-        />
-      </div>
-      <Button
-        onClick={generateNew}
-        disabled={loading}
-        size="lg"
-        className="bg-gradient-to-r from-orange-500 to-orange-600"
-      >
-        <Sparkles className="w-5 h-5 mr-2" />
-        Generate New Cat
-      </Button>
     </div>
   );
 }
